@@ -2,6 +2,7 @@
 @using HairSalon.Models
 <h1>@Model.GetName()!</h1>
 <h2>Current Stylist: @Stylist.Find(Model.GetStylist()).GetName()</h2>
+<h6> Hair: @Model.GetHair()</h6>
 <form class="" action="/Client/@Model.GetId()/" method="post">
   <label for="stylist">Change Stylist </label>
   <select name="stylist">

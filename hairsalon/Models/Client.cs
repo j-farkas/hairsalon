@@ -9,6 +9,7 @@ namespace HairSalon.Models
     private string _name;
     private int _id;
     private int _stylist;
+    private int _hair;
 
     public Client()
     {
@@ -51,6 +52,16 @@ namespace HairSalon.Models
       return _stylist;
     }
 
+    public void SetHair(int hair)
+    {
+      _hair = hair;
+    }
+
+    public int GetHair()
+    {
+      return _hair;
+    }
+
     public static Client Find(int check)
     {
       Client ret = new Client();
@@ -65,6 +76,7 @@ namespace HairSalon.Models
         ret.SetId(rdr.GetInt32(0));
         ret.SetName(rdr.GetString(1));
         ret.SetStylist(rdr.GetInt32(2));
+        ret.SetHair(rdr.GetInt32(3));
       }
 
       conn.Close();
@@ -89,6 +101,7 @@ namespace HairSalon.Models
         newItem.SetName(rdr.GetString(1));
         newItem.SetId(rdr.GetInt32(0));
         newItem.SetStylist(rdr.GetInt32(2));
+        newItem.SetHair(rdr.GetInt32(3));
         allItems.Add(newItem);
       }
       conn.Close();
@@ -128,6 +141,7 @@ namespace HairSalon.Models
         newClient.SetName(rdr.GetString(1));
         newClient.SetId(rdr.GetInt32(0));
         newClient.SetStylist(rdr.GetInt32(2));
+        newClient.SetHair(rdr.GetInt32(3));
         allItems.Add(newClient);
       }
       conn.Close();
@@ -140,10 +154,11 @@ namespace HairSalon.Models
 
     public void Save()
     {
+      Random rand = new Random();
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO `clients` (`name`, `stylist`) VALUES ('"+_name+"','"+_stylist+"');";
+      cmd.CommandText = @"INSERT INTO `clients` (`name`, `stylist`, `hair`) VALUES ('"+_name+"','"+_stylist+"',"+rand.Next(1,15)+");";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)

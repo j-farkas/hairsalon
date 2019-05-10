@@ -10,6 +10,7 @@ namespace HairSalon.Models
     private int _id;
     private string _description;
     private int _level;
+    private int _hair;
     private int _scissors;
     private string _scissorsName;
 
@@ -79,11 +80,24 @@ namespace HairSalon.Models
       _scissorsName = scissorsName;
     }
 
-    public string SetScissorsName()
+    public void SetHair(int hair)
+    {
+      _hair = hair;
+    }
+
+    public int GetHair()
+    {
+      return _hair;
+    }
+
+    public string GetScissorsName()
     {
       return _scissorsName;
     }
-
+    public int GetNextLevel()
+    {
+      return _level*_level*10;
+    }
     public static Stylist Find(int check)
     {
       Stylist ret = new Stylist();
@@ -160,7 +174,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`,`level`,`hair`,`scissors`,`scissors_name`) VALUES ('"+_name+"','"+_description+"',"+_level+","+_hair+","+_scissors+",'"+_scissors_name+"');";
+      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`,`level`,`hair`,`scissors`,`scissors_name`) VALUES ('"+_name+"','"+_description+"',"+_level+","+_hair+","+_scissors+",'"+_scissorsName+"');";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)
