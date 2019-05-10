@@ -6,15 +6,15 @@ using System;
 namespace HairSalon.Tests
 {
   [TestClass]
-  public class StylistTest : IDisposable
+  public class ClientTest : IDisposable
   {
 
     public void Dispose()
     {
-      Stylist.ClearAll();
+      Client.ClearAll();
     }
 
-    public StylistTest()
+    public ClientTest()
     {
       DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=jared_farkas_test;";
     }
@@ -33,9 +33,9 @@ namespace HairSalon.Tests
     public void GetAll_CategoriesNotEmpty_List()
     {
       //Arrange, Act
-      Stylist test = new Stylist("Test","Test");
+      Client test = new Client("Test",1);
       test.Save();
-      int result = Stylist.GetAll().Count;
+      int result = Client.GetAll().Count;
 
       //Assert
       Assert.AreEqual(1, result);
