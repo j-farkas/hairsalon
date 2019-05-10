@@ -165,5 +165,19 @@ namespace HairSalon.Models
         conn.Dispose();
       }
     }
+
+    public static void GrowHair()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE `clients` set `hair`=`hair`+1;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }

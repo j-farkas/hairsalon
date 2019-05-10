@@ -9,6 +9,9 @@ namespace HairSalon.Models
     private string _name;
     private int _id;
     private string _description;
+    private int _level;
+    private int _scissors;
+    private string _scissorsName;
 
     public Stylist()
     {
@@ -51,6 +54,36 @@ namespace HairSalon.Models
       return _description;
     }
 
+    public int GetLevel()
+    {
+      return _level;
+    }
+
+    public void SetLevel(int level)
+    {
+      _level = level;
+    }
+
+    public int GetScissors()
+    {
+      return _scissors;
+    }
+
+    public void SetScissors(int scissors)
+    {
+      _scissors = scissors;
+    }
+
+    public void SetScissorsName(string scissorsName)
+    {
+      _scissorsName = scissorsName;
+    }
+
+    public string SetScissorsName()
+    {
+      return _scissorsName;
+    }
+
     public static Stylist Find(int check)
     {
       Stylist ret = new Stylist();
@@ -62,9 +95,14 @@ namespace HairSalon.Models
       rdr.Read();
       if(rdr.IsDBNull(0) == false)
       {
-        ret.SetId(rdr.GetInt32(0));
+
         ret.SetName(rdr.GetString(1));
+        ret.SetId(rdr.GetInt32(0));
         ret.SetDescription(rdr.GetString(2));
+        ret.SetLevel(rdr.GetInt32(3));
+        ret.SetHair(rdr.GetInt32(4));
+        ret.SetScissors(rdr.GetInt32(5));
+        ret.SetScissorsName(rdr.GetString(6));
       }
 
       conn.Close();
@@ -89,6 +127,10 @@ namespace HairSalon.Models
         newItem.SetName(rdr.GetString(1));
         newItem.SetId(rdr.GetInt32(0));
         newItem.SetDescription(rdr.GetString(2));
+        newItem.SetLevel(rdr.GetInt32(3));
+        newItem.SetHair(rdr.GetInt32(4));
+        newItem.SetScissors(rdr.GetInt32(5));
+        newItem.SetScissorsName(rdr.GetString(6));
         allItems.Add(newItem);
       }
       conn.Close();
@@ -118,7 +160,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`) VALUES ('"+_name+"','"+_description+"');";
+      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`,`level`,`hair`,`scissors`,`scissors_name`) VALUES ('"+_name+"','"+_description+"',"+_level+","+_hair+","+_scissors+",'"+_scissors_name+"');";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)

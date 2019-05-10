@@ -1,7 +1,12 @@
 @{Html.RenderPartial("_navbar"); }
 @using HairSalon.Models;
-<h1>List of @Model.GetName()'s Clients:</h1>
 
+<h2>@Model.GetName() - @Model.GetDescription()</h2>
+<h4>Level:</h4>
+<h4>Scissors Strength: </h4>
+<h6>Hair Collected: </h6>
+<h6>Hair Needed to next level:</h6>
+<h1>List of @Model.GetName()'s Clients:</h1>
 <ul>
   @foreach(var client in @Client.GetClients(@Model.GetId()))
   {
