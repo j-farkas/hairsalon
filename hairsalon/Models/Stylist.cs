@@ -242,7 +242,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`,`level`,`hair`,`scissors`,`scissors_name`) VALUES ('"+_name+"','"+_description+"',"+_level+","+_hair+","+_scissors+",'"+_scissorsName+"');";
+      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`,`level`,`hair`,`scissors`,`scissors_name`) VALUES ('"+_name+"','"+_description+"',1,0,1,'Scissors');";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)
