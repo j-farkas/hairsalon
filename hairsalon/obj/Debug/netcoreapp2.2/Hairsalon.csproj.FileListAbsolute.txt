@@ -21,3 +21,5 @@
 /Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Hairsalon.pdb
 /Users/Guest/Desktop/hairsalon/Hairsalon/obj/Debug/netcoreapp2.2/Hairsalon.csproj.CopyComplete
 /Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Home/Index.g.cshtml.cs
+/Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Stylist/index.g.cshtml.cs
+/Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Stylist/New.g.cshtml.cs

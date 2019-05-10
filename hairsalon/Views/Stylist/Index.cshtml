@@ -1,0 +1,10 @@
+<h1>List of Stylists</h1>
+
+<ul>
+  @foreach(var stylist in Model)
+  {
+    <a href="Stylist/@stylist.GetId()">@stylist.GetName()</a><br>
+  }
+</ul>
+
+<a href=/stylist/new>ADD A STYLIST</a>
