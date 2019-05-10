@@ -29,16 +29,20 @@ namespace HairSalon.Tests
      Assert.AreEqual(0, result);
    }
 
-  //  [TestMethod]
-  //   public void GetAll_CategoriesNotEmptyAt_List()
-  //   {
-  //     //Arrange, Act
-  //     int result = Category.GetAll().Count;
-  //
-  //     //Assert
-  //     Assert.AreEqual(0, result);
-  //   }
-  // }
+   [TestMethod]
+    public void GetAll_CategoriesNotEmpty_List()
+    {
+      //Arrange, Act
+      Stylist test = new Stylist();
+      test.SetName("Test");
+      test.SetDescription("Test");
+      test.Save();
+      int result = Stylist.GetAll().Count;
+
+      //Assert
+      Assert.AreEqual(1, result);
+    }
+  }
 
 
 }

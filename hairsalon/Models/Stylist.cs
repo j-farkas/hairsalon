@@ -138,18 +138,18 @@ namespace HairSalon.Models
     //   return allItems;
     // }
 
-    // public static void AddToDB(Cuisine toAdd)
-    // {
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"INSERT INTO `animals` (`type`, `name`, `date_of_admittance`, `breed`, `sex`) VALUES ('"+toAdd.GetType()+"', '"+toAdd.GetName()+"', CURRENT_TIMESTAMP, '"+toAdd.GetBreed()+"', '"+toAdd.GetSex()+"');";
-    //   cmd.ExecuteNonQuery();
-    //   conn.Close();
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    // }
+    public void Save()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO `stylists` (`name`, `description`) VALUES ('"+_name+"','"+_description+"');";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }
