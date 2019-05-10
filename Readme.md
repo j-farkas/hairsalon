@@ -11,6 +11,30 @@ _Assigns clients to an employee within the list of employees. Should a client ha
 ## Setup/Installation Requirements
 
 * _Clone from https://github.com/j-farkas/wordcounter.git_
+
+*_To create the database:_*
+>CREATE DATABASE to_do;
+> USE to_do;
+> CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist INT(11), hair INT(11));
+
+  > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), level INT(11), hair INT(11), scissors INT(11), scissors_name VARCHAR(255));
+
+  >CREATE TABLE mods (id serial PRIMARY KEY, name VARCHAR(255));
+
+  >INSERT INTO mods (name) VALUES ('Steel');
+  >INSERT INTO mods (name) VALUES ('Silver');
+  >INSERT INTO mods (name) VALUES ('Gold');
+  >INSERT INTO mods (name) VALUES ('Diamond');
+  >INSERT INTO mods (name) VALUES ('Magic');
+
+  >CREATE TABLE suffix (id serial PRIMARY KEY, name VARCHAR(255));
+
+  >INSERT INTO suffix (name) VALUES ('Chance');
+  >INSERT INTO suffix (name) VALUES ('Luck');
+  >INSERT INTO suffix (name) VALUES ('Fortune');
+  >INSERT INTO suffix (name) VALUES ('Strength');
+  >INSERT INTO suffix (name) VALUES ('Fragility');
+
 * _Use dotnet run and load it from localhost_
 
 ## Specs
