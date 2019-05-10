@@ -8,7 +8,6 @@ namespace HairSalon.Controllers
 {
   public class ClientController : Controller
   {
-
     [HttpGet("/Client/New")]
     public ActionResult New()
     {   List<Stylist> allStylists = Stylist.GetAll();
@@ -28,7 +27,6 @@ namespace HairSalon.Controllers
         return View(theStylist);
     }
 
-
     [HttpPost("/Client/{id}")]
     public ActionResult Change(int id, string stylist)
     {
@@ -37,7 +35,6 @@ namespace HairSalon.Controllers
         theClient = Client.Find(id);
         return View("Show",theClient);
     }
-
 
     [HttpPost("/Client/{id}/Cut")]
     public ActionResult Change(int id)
