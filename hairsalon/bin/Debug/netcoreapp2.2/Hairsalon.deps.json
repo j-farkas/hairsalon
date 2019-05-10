@@ -22,7 +22,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v2.2": {
-      "Hairsalon/1.0.0": {
+      "hairsalon/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
@@ -30,10 +30,10 @@
           "MySqlConnector": "0.53.0"
         },
         "runtime": {
-          "Hairsalon.dll": {}
+          "hairsalon.dll": {}
         },
         "compile": {
-          "Hairsalon.dll": {}
+          "hairsalon.dll": {}
         }
       },
       "MySqlConnector/0.53.0": {
@@ -3244,7 +3244,7 @@
     }
   },
   "libraries": {
-    "Hairsalon/1.0.0": {
+    "hairsalon/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
