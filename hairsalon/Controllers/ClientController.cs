@@ -28,6 +28,7 @@ namespace HairSalon.Controllers
         return View(theStylist);
     }
 
+
     [HttpPost("/Client/{id}")]
     public ActionResult Change(int id, string stylist)
     {

@@ -22,6 +22,44 @@ namespace HairSalon.Controllers
         return View();
     }
 
+    [HttpPost("/Stylist/{id}/Replace")]
+    public ActionResult ReplaceIt(int id, bool change, string drop)
+    {
+        Stylist theStylist = Stylist.Find(id);
+        if(change == true)
+        {
+          theStylist.SetScissorsName(drop);
+          string scisName = theStylist.GetScissorsName();
+
+          if(scisName.Contains("Magic") == true)
+          {
+            theStylist.SetScissors(10);
+          }else if(scisName.Contains("Diamond")  == true)
+          {
+            theStylist.SetScissors(5);
+          }else if(scisName.Contains("Gold")  == true)
+          {
+            theStylist.SetScissors(4);
+          }else if(scisName.Contains("Silver")  == true)
+          {
+            theStylist.SetScissors(3);
+          }else if(scisName.Contains("Steel")  == true)
+          {
+            theStylist.SetScissors(2);
+          }
+          if(scisName.Contains("Strength")  == true)
+          {
+            theStylist.SetScissors(theStylist.GetScissors()*2);
+          }else if(scisName.Contains("Fragility")  == true)
+          {
+            theStylist.SetScissors(theStylist.GetScissors()/2);
+          }
+        }
+        theStylist.Update("scissors_name",theStylist.GetScissorsName());
+        theStylist.Update("scissors",theStylist.GetScissors().ToString());
+        return View("Show",theStylist);
+    }
+
     [HttpGet("/Stylist/{id}")]
     public ActionResult Show(int id)
     {
