@@ -33,9 +33,7 @@ namespace HairSalon.Tests
     public void GetAll_CategoriesNotEmpty_List()
     {
       //Arrange, Act
-      Stylist test = new Stylist();
-      test.SetName("Test");
-      test.SetDescription("Test");
+      Stylist test = new Stylist("Test","Test");
       test.Save();
       int result = Stylist.GetAll().Count;
 

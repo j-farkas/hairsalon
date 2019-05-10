@@ -15,6 +15,12 @@ namespace HairSalon.Models
 
     }
 
+    public Stylist(string name, string description)
+    {
+      _name = name;
+      _description = description;
+    }
+
     public int GetId()
     {
       return _id;
