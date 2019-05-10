@@ -2,14 +2,15 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System;
 
-namespace Food.Models
+namespace HairSalon.Models
 {
-  public class Cuisine
+  public class Stylist
   {
     private string _name;
     private int _id;
+    private string _description;
 
-    public Cuisine()
+    public Stylist()
     {
 
     }
@@ -34,18 +35,30 @@ namespace Food.Models
       _name = name;
     }
 
-    public static string GetCuisine(int check)
+    public void SetDescription(string description)
     {
-      string retString = "";
+      _description = description;
+    }
+
+    public string GetDescription()
+    {
+      return _description;
+    }
+
+    public static Stylist GetStylist(int check)
+    {
+      Stylist ret = new Stylist();
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM cuisine where id = "+check+";";
+      cmd.CommandText = @"SELECT * FROM stylists where id = "+check+";";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       rdr.Read();
       if(rdr.IsDBNull(0) == false)
       {
-        retString = rdr.GetString(0);
+        ret.SetId(rdr.GetInt32(0));
+        ret.setName(rdr.GetString(1));
+        ret.SetDescription(rdr.GetString(2));
       }
 
       conn.Close();
@@ -56,19 +69,20 @@ namespace Food.Models
       return retString;
     }
 
-    public static List<Cuisine> GetAll()
+    public static List<Stylist> GetAll()
     {
-      List<Cuisine> allItems = new List<Cuisine> {};
+      List<Stylist> allItems = new List<Stylist> {};
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM cuisine;";
+      cmd.CommandText = @"SELECT * FROM stylists;";
       MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        Cuisine newItem = new Cuisine();
-        newItem.SetName(rdr.GetString(0));
-        newItem.SetId(rdr.GetInt32(1));
+        Stylist newItem = new Stylist();
+        newItem.SetName(rdr.GetString(1));
+        newItem.SetId(rdr.GetInt32(0));
+        newItem.SetDescription(rdr.GetString(2));
         allItems.Add(newItem);
       }
       conn.Close();
@@ -79,36 +93,36 @@ namespace Food.Models
       return allItems;
     }
 
-    public static List<Res> GetSome(string cuisine)
-    {
-
-      int num = int.Parse(cuisine);
-      List<Res> allItems = new List<Res> {};
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"SELECT * FROM `restaurant` WHERE `primarycuisine` = "+num+" or `secondarycuisine` = "+num+";";
-      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-      while(rdr.Read())
-      {
-        Res newItem = new Res();
-        newItem.SetName(rdr.GetString(1));
-        newItem.SetId(rdr.GetInt32(0));
-        newItem.SetDescription(rdr.GetString(2));
-        newItem.SetPrimaryKey(rdr.GetInt32(3));
-        if(rdr.IsDBNull(4) == false)
-        {
-          newItem.SetSecondaryKey(rdr.GetInt32(4));
-        }
-          allItems.Add(newItem);
-      }
-      conn.Close();
-      if (conn != null)
-      {
-        conn.Dispose();
-      }
-      return allItems;
-    }
+    // public static List<Client> GetClients(int check)
+    // {
+    //
+    //   int num = int.Parse(cuisine);
+    //   List<Client> allItems = new List<Client> {};
+    //   MySqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+    //   cmd.CommandText = @"SELECT * FROM `restaurant` WHERE `primarycuisine` = "+num+" or `secondarycuisine` = "+num+";";
+    //   MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+    //   while(rdr.Read())
+    //   {
+    //     Client newItem = new Client();
+    //     newItem.SetName(rdr.GetString(1));
+    //     newItem.SetId(rdr.GetInt32(0));
+    //     newItem.SetDescription(rdr.GetString(2));
+    //     newItem.SetPrimaryKey(rdr.GetInt32(3));
+    //     if(rdr.IsDBNull(4) == false)
+    //     {
+    //       newItem.SetSecondaryKey(rdr.GetInt32(4));
+    //     }
+    //       allItems.Add(newItem);
+    //   }
+    //   conn.Close();
+    //   if (conn != null)
+    //   {
+    //     conn.Dispose();
+    //   }
+    //   return allItems;
+    // }
 
     // public static void AddToDB(Cuisine toAdd)
     // {
