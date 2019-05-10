@@ -1,12 +1,12 @@
 # _Hair Salon_
 
-#### _Allows a hair salon to provide a list of emplyees and attach clients to one employee in the list_
+#### _Allows a hair salon to create a list of employees and attach clients to one employee in the list_
 
 #### By _**Jared Farkas**_
 
 ## Description
 
-_Assigns clients to an employee within the list of employees. Should a client have too much hair cut, they will be killed and the employee may find scissors with which to more efficiently kill future clients._
+_Assigns clients to an employee within the list of employees. Should a client have too much hair cut, they will be killed and that employee may find scissors with which to more efficiently kill future clients. After each hair cut employees will also pocket any hair they cut, which can be utilized by them to increase their hair cutting efficiency_
 
 ## Setup/Installation Requirements
 
@@ -15,9 +15,9 @@ _Assigns clients to an employee within the list of employees. Should a client ha
 *_To create the database:_*
 >CREATE DATABASE to_do;
 > USE to_do;
-> CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist INT(11), hair INT(11));
+> CREATE TABLE clients (id serial PRIMARY KEY, name VARCHAR(255), stylist int(11), hair int(11));
 
-  > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), level INT(11), hair INT(11), scissors INT(11), scissors_name VARCHAR(255));
+  > CREATE TABLE stylists (id serial PRIMARY KEY, name VARCHAR(255), description VARCHAR(255), level int(11), hair int(11), scissors int(11), scissors_name VARCHAR(255));
 
   >CREATE TABLE mods (id serial PRIMARY KEY, name VARCHAR(255));
 
@@ -49,7 +49,7 @@ _Assigns clients to an employee within the list of employees. Should a client ha
 
 ## Known Bugs
 
-_None as of last update_
+_None currently known_
 
 ## Support and contact details
 
@@ -57,7 +57,7 @@ _Contact jaredmfarkas@gmail.com for support._
 
 ## Technologies Used
 
-_C#, .Net, Razor, MySql_
+_C#, .Net, Razor asp.net, MySql_
 
 ### License
 
