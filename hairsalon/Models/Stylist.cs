@@ -177,7 +177,52 @@ namespace HairSalon.Models
 
     public void GetDrop()
     {
-      _dropName = "Hey";
+      _dropName = "";
+      Random rnd = new Random();
+      int luck = 20;
+      if(_scissorsName.Contains("Chance"))
+      {
+        luck /= 2;
+      }
+      if(_scissorsName.Contains("Luck"))
+      {
+        luck /= 3;
+      }
+      if(_scissorsName.Contains("Fortune"))
+      {
+        luck /= 4;
+      }
+      int rand = rnd.Next(1,1000);
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM mods where id = "+rand % luck+";";
+      MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+      if(rdr.Read())
+      {
+        _dropName += rdr.GetString(1) + " ";
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      _dropName += "Scissors";
+      rand = rnd.Next(1,1000);
+      conn = DB.Connection();
+      conn.Open();
+      cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM suffix where id = "+rand % luck+";";
+      rdr = cmd.ExecuteReader() as MySqlDataReader;
+      if(rdr.Read())
+      {
+        _dropName += " Of " + rdr.GetString(1);
+      }
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
     }
 
     public void Update(string field, string change)
