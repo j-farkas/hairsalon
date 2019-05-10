@@ -151,5 +151,19 @@ namespace HairSalon.Models
         conn.Dispose();
       }
     }
+
+    public void Update(string field, string change)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"UPDATE `clients` SET `"+field+"` = '"+change+"' WHERE `clients`.`id` = "+_id+";";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
   }
 }

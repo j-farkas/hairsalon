@@ -1,2 +1,15 @@
 @{Html.RenderPartial("_navbar"); }
+@using HairSalon.Models
 <h1>@Model.GetName()!</h1>
+<h2>Current Stylist: @Stylist.Find(Model.GetStylist()).GetName()</h2>
+<form class="" action="/Client/@Model.GetId()/" method="post">
+  <label for="stylist">Change Stylist </label>
+  <select name="stylist">
+    @foreach(var stylist in Stylist.GetAll())
+    {
+      <option value="@stylist.GetId()">@stylist.GetName()</option>
+    }
+  </select>
+  <br>
+<button type="submit">Submit</button>
+</form>

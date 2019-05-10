@@ -1,8 +1,9 @@
 @{Html.RenderPartial("_navbar"); }
-<h1>List of Clients</h1>
+@using HairSalon.Models;
+<h1>List of @Model.GetName()'s Clients:</h1>
 
 <ul>
-  @foreach(var client in Model)
+  @foreach(var client in @Client.GetClients(@Model.GetId()))
   {
     <a href="/Client/@client.GetId()">@client.GetName()</a><br>
   }

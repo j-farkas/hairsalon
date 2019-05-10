@@ -20,5 +20,16 @@ namespace HairSalon.Controllers
     {   Client theClient = Client.Find(id);
         return View(theClient);
     }
+
+
+
+    [HttpPost("/Client/{id}")]
+    public ActionResult Change(int id, string stylist)
+    {
+        Client theClient = Client.Find(id);
+        theClient.Update("stylist", stylist);
+        theClient = Client.Find(id);
+        return View("Show",theClient);
+    }
   }
 }
