@@ -10,6 +10,7 @@ namespace HairSalon.Models
     private int _id;
     private int _stylist;
     private int _hair;
+    private string _haircut;
 
     public Client()
     {
@@ -40,6 +41,16 @@ namespace HairSalon.Models
     public void SetName(string name)
     {
       _name = name;
+    }
+
+    public string GetHaircut()
+    {
+      return _haircut;
+    }
+
+    public void SetHaircut(string haircut)
+    {
+      _haircut = haircut;
     }
 
     public void SetStylist(int stylist)
@@ -158,7 +169,7 @@ namespace HairSalon.Models
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO `clients` (`name`, `stylist`, `hair`) VALUES ('"+_name+"','"+_stylist+"',"+rand.Next(1,15)+");";
+      cmd.CommandText = @"INSERT INTO `clients` (`name`, `stylist`, `hair`) VALUES ('"+_name+"','"+_stylist+"',"+rand.Next(2,30)+");";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)
