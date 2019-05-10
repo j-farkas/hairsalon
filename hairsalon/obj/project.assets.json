@@ -12098,7 +12098,7 @@
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "MySqlConnector"
+      "MySqlConnector >= 0.53.0"
     ]
   },
   "packageFolders": {
@@ -12108,11 +12108,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Guest/Desktop/hairsalon/hairsalon.csproj",
-      "projectName": "hairsalon",
-      "projectPath": "/Users/Guest/Desktop/hairsalon/hairsalon.csproj",
+      "projectUniqueName": "/Users/Guest/Desktop/hairsalon/Hairsalon/Hairsalon.csproj",
+      "projectName": "Hairsalon",
+      "projectPath": "/Users/Guest/Desktop/hairsalon/Hairsalon/Hairsalon.csproj",
       "packagesPath": "/Users/Guest/.nuget/packages/",
-      "outputPath": "/Users/Guest/Desktop/hairsalon/obj/",
+      "outputPath": "/Users/Guest/Desktop/hairsalon/Hairsalon/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -12159,7 +12159,7 @@
           },
           "MySqlConnector": {
             "target": "Package",
-            "version": "(, )"
+            "version": "[0.53.0, )"
           }
         },
         "imports": [

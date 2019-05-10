@@ -45,7 +45,7 @@ namespace HairSalon.Models
       return _description;
     }
 
-    public static Stylist GetStylist(int check)
+    public static Stylist Find(int check)
     {
       Stylist ret = new Stylist();
       MySqlConnection conn = DB.Connection();
@@ -57,7 +57,7 @@ namespace HairSalon.Models
       if(rdr.IsDBNull(0) == false)
       {
         ret.SetId(rdr.GetInt32(0));
-        ret.setName(rdr.GetString(1));
+        ret.SetName(rdr.GetString(1));
         ret.SetDescription(rdr.GetString(2));
       }
 
@@ -66,7 +66,7 @@ namespace HairSalon.Models
       {
         conn.Dispose();
       }
-      return retString;
+      return ret;
     }
 
     public static List<Stylist> GetAll()
@@ -91,6 +91,20 @@ namespace HairSalon.Models
         conn.Dispose();
       }
       return allItems;
+    }
+
+    public static void ClearAll()
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"DELETE FROM stylists;";
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+       conn.Dispose();
+      }
     }
 
     // public static List<Client> GetClients(int check)
