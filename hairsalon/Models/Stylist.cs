@@ -113,37 +113,6 @@ namespace HairSalon.Models
       }
     }
 
-    // public static List<Client> GetClients(int check)
-    // {
-    //
-    //   int num = int.Parse(cuisine);
-    //   List<Client> allItems = new List<Client> {};
-    //   MySqlConnection conn = DB.Connection();
-    //   conn.Open();
-    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-    //   cmd.CommandText = @"SELECT * FROM `restaurant` WHERE `primarycuisine` = "+num+" or `secondarycuisine` = "+num+";";
-    //   MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
-    //   while(rdr.Read())
-    //   {
-    //     Client newItem = new Client();
-    //     newItem.SetName(rdr.GetString(1));
-    //     newItem.SetId(rdr.GetInt32(0));
-    //     newItem.SetDescription(rdr.GetString(2));
-    //     newItem.SetPrimaryKey(rdr.GetInt32(3));
-    //     if(rdr.IsDBNull(4) == false)
-    //     {
-    //       newItem.SetSecondaryKey(rdr.GetInt32(4));
-    //     }
-    //       allItems.Add(newItem);
-    //   }
-    //   conn.Close();
-    //   if (conn != null)
-    //   {
-    //     conn.Dispose();
-    //   }
-    //   return allItems;
-    // }
-
     public void Save()
     {
       MySqlConnection conn = DB.Connection();
