@@ -192,12 +192,12 @@ namespace HairSalon.Models
       }
     }
 
-    public static void GrowHair()
+    public void GrowHair()
     {
       MySqlConnection conn = DB.Connection();
       conn.Open();
       MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"UPDATE `clients` set `hair`=`hair`+1;";
+      cmd.CommandText = @"UPDATE `clients` set `hair`=`hair`+1 where id != "+_id+";";
       cmd.ExecuteNonQuery();
       conn.Close();
       if (conn != null)

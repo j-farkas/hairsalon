@@ -27,3 +27,4 @@
 /Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Stylist/Show.g.cshtml.cs
 /Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Client/Show.g.cshtml.cs
 /Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Shared/_navbar.g.cshtml.cs
+/Users/Guest/Desktop/hairsalon/hairsalon/obj/Debug/netcoreapp2.2/Razor/Views/Client/Replace.g.cshtml.cs

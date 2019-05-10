@@ -21,7 +21,12 @@ namespace HairSalon.Controllers
         return View(theClient);
     }
 
-
+    [HttpGet("/Stylist/{id}/Replace")]
+    public ActionResult Replace(int id)
+    {
+        Stylist theStylist = Stylist.Find(id);
+        return View(theStylist);
+    }
 
     [HttpPost("/Client/{id}")]
     public ActionResult Change(int id, string stylist)
@@ -32,16 +37,19 @@ namespace HairSalon.Controllers
         return View("Show",theClient);
     }
 
+
     [HttpPost("/Client/{id}/Cut")]
     public ActionResult Change(int id)
     {
         Client theClient = Client.Find(id);
+        theClient.GrowHair();
         Stylist theStylist = Stylist.Find(theClient.GetStylist());
         int damage = theStylist.GetLevel()+theStylist.GetScissors();
         if(damage > theClient.GetHair())
         {
           //The client has been killed
-          Client.GrowHair();
+          theStylist.GetDrop();
+          return View("Replace", theStylist);
         }else{
           //The client lives on
           if(theStylist.GetHair()+damage > theStylist.GetNextLevel())
@@ -52,7 +60,6 @@ namespace HairSalon.Controllers
             theStylist.Update("hair",(theStylist.GetHair()+damage).ToString());
           }
           theClient.Update("hair",(theClient.GetHair()-damage).ToString());
-          Client.GrowHair();
           theClient = Client.Find(id);
           return View("Show",theClient);
         }

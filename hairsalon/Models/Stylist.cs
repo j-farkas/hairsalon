@@ -13,6 +13,7 @@ namespace HairSalon.Models
     private int _hair;
     private int _scissors;
     private string _scissorsName;
+    private string _dropName;
 
     public Stylist()
     {
@@ -88,6 +89,11 @@ namespace HairSalon.Models
     public int GetHair()
     {
       return _hair;
+    }
+
+    public string GetDropInfo()
+    {
+      return _dropName;
     }
 
     public string GetScissorsName()
@@ -169,6 +175,11 @@ namespace HairSalon.Models
       }
     }
 
+    public void GetDrop()
+    {
+      _dropName = "Hey";
+    }
+
     public void Update(string field, string change)
     {
       MySqlConnection conn = DB.Connection();
@@ -182,7 +193,7 @@ namespace HairSalon.Models
         conn.Dispose();
       }
     }
-    
+
     public void Save()
     {
       MySqlConnection conn = DB.Connection();
