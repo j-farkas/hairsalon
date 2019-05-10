@@ -1,9 +1,9 @@
 <h1>List of Stylists</h1>
 
 <ul>
-  @foreach(var stylist in Model)
+  @foreach(var client in Model)
   {
-    <a href="Stylist/@stylist.GetId()">@stylist.GetName()</a><br>
+    <a href="/Client/@client.GetId()">@client.GetName()</a><br>
   }
 </ul>
 

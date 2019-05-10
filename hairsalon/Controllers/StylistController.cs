@@ -9,8 +9,6 @@ namespace HairSalon.Controllers
   public class StylistController : Controller
   {
 
-
-
     [HttpGet("/Stylist")]
     public ActionResult Index()
     {
@@ -24,6 +22,13 @@ namespace HairSalon.Controllers
         return View();
     }
 
+    [HttpGet("/Stylist/{id}")]
+    public ActionResult Show(int id)
+    {
+      List<Client> someClients = Client.GetClients(id);
+      return View(someClients);
+    }
+
     [HttpPost("/Stylist")]
     public ActionResult New(string name, string description)
     {
@@ -32,7 +37,13 @@ namespace HairSalon.Controllers
         return RedirectToAction("Index");
     }
 
-
+    [HttpPost("/Client")]
+    public ActionResult Add(string name, string stylist)
+    {
+        Client addClient = new Client(name, int.Parse(stylist));
+        addClient.Save();
+        return RedirectToAction("Index");
+    }
 
   }
 }
