@@ -89,7 +89,6 @@ namespace HairSalon.Models
         ret.SetStylist(rdr.GetInt32(2));
         ret.SetHair(rdr.GetInt32(3));
       }
-
       conn.Close();
       if (conn != null)
       {

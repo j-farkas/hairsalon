@@ -115,7 +115,6 @@ namespace HairSalon.Models
       rdr.Read();
       if(rdr.IsDBNull(0) == false)
       {
-
         ret.SetName(rdr.GetString(1));
         ret.SetId(rdr.GetInt32(0));
         ret.SetDescription(rdr.GetString(2));
@@ -124,7 +123,6 @@ namespace HairSalon.Models
         ret.SetScissors(rdr.GetInt32(5));
         ret.SetScissorsName(rdr.GetString(6));
       }
-
       conn.Close();
       if (conn != null)
       {
