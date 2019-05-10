@@ -50,6 +50,7 @@ namespace HairSalon.Controllers
         {
           //The client has been killed
           theStylist.GetDrop();
+          theClient.Delete();
           return View("Replace", theStylist);
         }else{
           //The client lives on
