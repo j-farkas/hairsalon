@@ -10,7 +10,7 @@
 <ul>
   @foreach(var client in @Client.GetClients(@Model.GetId()))
   {
-    <a href="/Client/@client.GetId()">@client.GetName()</a><br>
+    <a href="/Client/@client.GetId()">@client.GetName() / Hair: @client.GetHair()</a><br>
   }
 </ul>
 
