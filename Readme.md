@@ -10,7 +10,7 @@ _Assigns clients to an employee within the list of employees. Should a client ha
 
 ## Setup/Installation Requirements
 
-* _Clone from https://github.com/j-farkas/wordcounter.git_
+* _Clone from https://github.com/j-farkas/hairsalon.git_
 
 *_To create the database:_*
 >CREATE DATABASE to_do;
@@ -41,12 +41,11 @@ _Assigns clients to an employee within the list of employees. Should a client ha
 
 | Behavior | Input | Output |
 | ------------- |:-------------:| -----:|
-| A single letter is compared to a single letter | "a", "a"  | 1 |
-| A single letter is compared to a word | "a", "bat" | 1 |
-| A word is compared to a sentence | "hat", "I even don't wear a hat every day" | 1 |
-| A word is compared to a sentence that has words that contain the given word | "how", "I don't know how to do that, however, I have some ideas on how to proceed" | 3 |
-| A word is compared to a phrase that contains the word, but there are spaces or punctuation in between | "hot",  "Both other people think we should go" | 1 |
-| A phrase containing punctuation is entered | "hot/",  "Both other people think we should go" | 0(input is ignored) |
+| A stylist is added to the form | "Namey"  | A stylist is added to the database |
+| A client is added to the form using a dropdown to select their stylist | "Clienty" | A client is added to the database with a foreign key to reference their stylist |
+| In the client show screen, a new stylist is selected | n/a | the foreign key for the selected client is changed in the database to reflect their new stylist |
+| In the client show screen, a haircut is selected and the client has hair remaining | n/a | The stylist keeps the hair and progresses towards the next level|
+| In the client show screen, a haircut is selected and the client has negative hair remaining | n/a | The client is killed, a random pair of scissors is generated for the stylist, and hair is taken to progress the stylist to the next level|
 
 ## Known Bugs
 
@@ -58,7 +57,7 @@ _Contact jaredmfarkas@gmail.com for support._
 
 ## Technologies Used
 
-_C#, .Net, Razor_
+_C#, .Net, Razor, MySql_
 
 ### License
 
